@@ -6,6 +6,7 @@ import { STATUSES, ui, type Request, type Vote, type Status } from '../lib/reque
 import { RequestCard } from './request-card'
 import { RequestDetail } from './request-detail'
 import { SubmitForm } from './submit-form'
+import { Cta } from './cta'
 
 type View = { mode: 'board' } | { mode: 'detail'; id: string } | { mode: 'submit' }
 
@@ -106,9 +107,7 @@ export function Board() {
             Vote on what matters — the most-wanted rise to the top of each column.
           </Text>
         </YStack>
-        <Button theme="active" onPress={() => setView({ mode: 'submit' })}>
-          + New request
-        </Button>
+        <Cta onPress={() => setView({ mode: 'submit' })}>+ New request</Cta>
       </XStack>
 
       {requests.error ? (

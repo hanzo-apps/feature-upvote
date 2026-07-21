@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { XStack, YStack, H3, Text, Paragraph, Button, Input, TextArea } from '@hanzo/gui'
 import { ui } from '../lib/requests'
+import { Cta } from './cta'
 
 /**
  * The new-request form. Collects a title + details and hands them to Board,
@@ -55,17 +56,13 @@ export function SubmitForm({
           />
         </YStack>
         {error ? <Text color="$red10">{error.message}</Text> : null}
-        <XStack gap="$2" justifyContent="flex-end">
+        <XStack gap="$2" justifyContent="flex-end" alignItems="center">
           <Button chromeless onPress={onCancel}>
             Cancel
           </Button>
-          <Button
-            theme="active"
-            disabled={!ready || submitting}
-            onPress={() => onSubmit(title.trim(), description.trim())}
-          >
+          <Cta disabled={!ready || submitting} onPress={() => onSubmit(title.trim(), description.trim())}>
             {submitting ? 'Submitting…' : 'Submit request'}
-          </Button>
+          </Cta>
         </XStack>
       </YStack>
     </YStack>

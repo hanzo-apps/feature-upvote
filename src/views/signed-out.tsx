@@ -2,6 +2,7 @@ import { useIam } from '@hanzo/iam/react'
 import { XStack, YStack, H1, Text, Paragraph, Button, Circle } from '@hanzo/gui'
 import { STATUSES, ui, type Status } from '../lib/requests'
 import { UpvotePill } from './upvote-pill'
+import { Cta } from './cta'
 
 /** Illustrative board content for the landing preview (not live data). */
 const SAMPLE: Record<Status, { title: string; who: string; votes: number }[]> = {
@@ -76,9 +77,9 @@ export function SignedOut() {
             team moves each request from open to planned to shipped — demand, ranked.
           </Paragraph>
           <XStack gap="$3" alignItems="center" flexWrap="wrap" justifyContent="center">
-            <Button size="$5" theme="active" disabled={isLoading} onPress={() => login()}>
+            <Cta size="lg" disabled={isLoading} onPress={() => login()}>
               {isLoading ? 'Loading…' : 'Sign in with Hanzo'}
-            </Button>
+            </Cta>
             <Text fontSize={13} color={ui.faint}>
               Secured by Hanzo IAM · data in Hanzo Base
             </Text>

@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@hanzo/base/react'
 import { XStack, YStack, H3, Text, Paragraph, Button, Input, Spinner, Circle, Separator } from '@hanzo/gui'
 import { STATUSES, statusMeta, ui, type Comment, type Request, type Status } from '../lib/requests'
 import { UpvotePill } from './upvote-pill'
+import { Cta } from './cta'
 
 /**
  * A single request: its description, the vote toggle, a status control (the
@@ -89,7 +90,7 @@ export function RequestDetail({
         <Text fontSize={16} fontWeight="700" color={ui.ink}>
           Comments{comments.data.length ? ` (${comments.data.length})` : ''}
         </Text>
-        <XStack gap="$2">
+        <XStack gap="$2" alignItems="center">
           <Input
             flex={1}
             value={body}
@@ -97,9 +98,9 @@ export function RequestDetail({
             onChangeText={setBody}
             onSubmitEditing={post}
           />
-          <Button theme="active" disabled={addComment.isLoading || !body.trim()} onPress={post}>
+          <Cta disabled={addComment.isLoading || !body.trim()} onPress={post}>
             Post
-          </Button>
+          </Cta>
         </XStack>
         {addComment.error ? <Text color="$red10">{addComment.error.message}</Text> : null}
 
